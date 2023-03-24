@@ -1,0 +1,49 @@
+spawn(function()
+if getgenv().Method == "Tween" then
+local character = game.Players.LocalPlayer.Character
+local humanoidRootPart = character.HumanoidRootPart
+
+
+local targetCFrame = humanoidRootPart.CFrame * CFrame.new(getgenv().MethodDistance)
+local tweenInfo = TweenInfo.new(1,
+Enum.EasingStyle.Quad, 
+Enum.EasingDirection.Out, 
+0, 
+false, 
+0 
+)
+
+local tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, {CFrame = targetCFrame})
+tween:Play()
+
+targetCFrame = humanoidRootPart.CFrame * CFrame.new(getgenv().MethodDistance)
+tween:Cancel()
+tween = game:GetService("TweenService"):Create(humanoidRootPart, tweenInfo, {CFrame = targetCFrame})
+tween:Play()
+
+end
+end)
+
+
+spawn(function()
+if getgenv().Method == "Tp" then
+local character = game.Players.LocalPlayer.Character
+local humanoidRootPart = character.HumanoidRootPart
+
+
+local targetCFrame = humanoidRootPart.CFrame * CFrame.new(getgenv().MethodDistance)
+
+humanoidRootPart.CFrame = targetCFrame
+end
+end)
+
+
+
+
+spawn(function()
+if getgenv().Method == "Parry" then
+game:GetService('VirtualInputManager'):SendKeyEvent(true,getgenv().MethodKey,false,sex)
+wait(MethodKeyReleaseTime)
+game:GetService('VirtualInputManager'):SendKeyEvent(false,getgenv().MethodKey,false,sex)
+end
+end)
